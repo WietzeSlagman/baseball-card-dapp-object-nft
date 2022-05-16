@@ -14,11 +14,11 @@ const makeBidOfferForCard = async ({
   price,
 }) => {
   assert(card, X`At least one card must be chosen to purchase`);
-  const c = JSON.stringify({
+
+  const invitation = await E(publicFacet).makeBidInvitationForKey({
     url: 'https://agoric.com',
     name: 'Sleve McDichael',
   });
-  const invitation = await E(publicFacet).makeBidInvitationForKey(c);
 
   const offerConfig = {
     // JSONable ID for this offer.  This is scoped to the origin.
@@ -28,7 +28,10 @@ const makeBidOfferForCard = async ({
       want: {
         Asset: {
           pursePetname: cardPurse.pursePetname,
-          value: harden([c]),
+          value: harden([{
+            url: 'https://agoric.com',
+            name: 'Sleve McDichael',
+          }]),
         },
       },
       give: {

@@ -30,8 +30,7 @@ const start = (zcf) => {
     minBidPerCard,
     timeAuthority,
   ) => {
-    const encodedCards = newCardNames.map((c) => JSON.stringify(c));
-    const newCardsForSaleAmount = AmountMath.make(brand, harden(encodedCards));
+    const newCardsForSaleAmount = AmountMath.make(brand, newCardNames);
     const allCardsForSalePayment = mint.mintPayment(newCardsForSaleAmount);
     // Note that the proposal `want` is empty because we don't know
     // how many cards will be sold, so we don't know how much money we

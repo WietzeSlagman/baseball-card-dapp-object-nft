@@ -1,3 +1,11 @@
+# Baseball Card Store (Objects as NFTs)
+
+Walkthrough of changes necessary to mint object NFTs instead of string NFTs withing the Baseball Card Store. Search for '// CODECHANGE' within the repo to see the steps.
+
+Follow the instructions below to deploy and run the dapp and click the single button in the ui to test.
+
+> please allow some time between page load and pressing the button as it takes some time to load wallet data needed to bid
+
 # Baseball Card Store Dapp
 
 TL;DR:

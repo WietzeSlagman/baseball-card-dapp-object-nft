@@ -13,7 +13,7 @@ const makeBidOfferForCard = async ({
   tokenPurse,
   price,
 }) => {
-  // CODECHANGE5: hardcode nftobject matching an element in /api/cards.js
+  // CODECHANGE6: hardcode nftobject matching an element in /api/cards.js
 
   const card = {
     url: 'https://agoric.com',

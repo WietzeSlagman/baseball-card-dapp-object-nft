@@ -160,7 +160,7 @@ function App() {
   //   });
   // };
 
-  // CODECHANGE6: remove unwanted card & price arg based on previous change
+  // CODECHANGE7: remove unwanted card & price arg based on previous change
   // ** this file has been simplified for testing purposes, most
   //    ui features are commented out, leaving just a button
   const submitCardOffer = (price, selectedPurse) => {
@@ -183,7 +183,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* CODECHANGE7: make the call to submit an bid */}
+      {/* CODECHANGE8: make the call to submit an bid */}
       <button onClick={() => submitCardOffer(10000000, tokenPurses[1])}>
         {' '}
         CLICK THIS BUTTON TO TRIGGER CARD OFFER

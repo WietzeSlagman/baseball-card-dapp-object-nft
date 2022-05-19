@@ -189,7 +189,7 @@ const start = (zcf) => {
     return session.makeBidInvitation();
   };
 
-  // CODECHANGE3: adjust item parameter to fit new nft type (see comment below)
+  // CODECHANGE4: adjust item parameter to fit new nft type (see comment below)
   const getSessionDetailsForKey = async (item) => {
     // item -> item.name
     assert.typeof(item.name, 'string');
@@ -216,7 +216,7 @@ const start = (zcf) => {
   };
 
   const getCompletedPromiseForKey = (item) => {
-    // CODECHANGE4: item -> item.name
+    // CODECHANGE5: item -> item.name
     const session = sellerSessions[item.name];
     return session && session.completedP;
   };

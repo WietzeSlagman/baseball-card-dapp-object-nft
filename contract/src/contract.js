@@ -46,8 +46,9 @@ const start = (zcf) => {
       Money: moneyIssuer,
     });
 
+    // CODECHANGE2: shortened bidDuration from 300 to 1s for quicker testing
     const auctionItemsTerms = harden({
-      bidDuration: 300n,
+      bidDuration: 1n,
       winnerPriceOption: FIRST_PRICE,
       ...zcf.getTerms(),
       auctionInstallation,

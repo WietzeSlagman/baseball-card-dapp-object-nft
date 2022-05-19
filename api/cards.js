@@ -1,3 +1,4 @@
+// CODECHANGE1: replace array of strings for array of objects, this data is passed to api deployment script ln 115: E(baseballCardSellerFacet).auctionCards(cards, ...args)
 // Courtesy of https://twitter.com/lrgmnn/status/813635533658144768/
 export const cards = [
   { url: 'https://agoric.com', name: 'Sleve McDichael' },

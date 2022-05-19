@@ -171,11 +171,14 @@ const start = (zcf) => {
     };
   };
 
-  const getOrCreateAuctionSession = async (itemKey) => {
-    // assert.typeof(itemKey.name, 'string');
-
+  // CODECHANGE3: the nfts are now objects instead of strings,
+  // we check for the property "name" and ensure it's a string
+  // we can use as a key in the sellerSession array
+  const getOrCreateAuctionSession = async (item) => {
+    assert.typeof(item.name, 'string');
+    const itemKey = item.name;
     if (!sellerSessions[itemKey]) {
-      sellerSessions[itemKey] = await startAuctioningItem(itemKey);
+      sellerSessions[itemKey] = await startAuctioningItem(item);
     }
 
     return sellerSessions[itemKey];
@@ -186,15 +189,17 @@ const start = (zcf) => {
     return session.makeBidInvitation();
   };
 
-  const getSessionDetailsForKey = async (itemKey) => {
-    // assert.typeof(itemKey, 'string');
-    const session = sellerSessions[itemKey];
+  // CODECHANGE3: adjust item parameter to fit new nft type (see comment below)
+  const getSessionDetailsForKey = async (item) => {
+    // item -> item.name
+    assert.typeof(item.name, 'string');
+    const session = sellerSessions[item.name];
 
     if (!session) {
       // session is not started, try to return general data,
       // The trade-off here is we have to fake the session data,
       // and it there may be mismatch between our version and the inner one
-      const itemAmount = AmountMath.make(itemBrand, harden([itemKey]));
+      const itemAmount = AmountMath.make(itemBrand, harden([item]));
 
       return harden({
         auctionedAssets: itemAmount,
@@ -210,8 +215,9 @@ const start = (zcf) => {
     return session.getSessionDetails();
   };
 
-  const getCompletedPromiseForKey = (itemKey) => {
-    const session = sellerSessions[itemKey];
+  const getCompletedPromiseForKey = (item) => {
+    // CODECHANGE4: item -> item.name
+    const session = sellerSessions[item.name];
     return session && session.completedP;
   };
 

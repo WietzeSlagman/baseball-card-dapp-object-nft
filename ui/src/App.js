@@ -160,11 +160,14 @@ function App() {
   //   });
   // };
 
-  const submitCardOffer = (name, price, selectedPurse) => {
+  // CODECHANGE6: remove unwanted card & price arg based on previous change
+  // ** this file has been simplified for testing purposes, most
+  //    ui features are commented out, leaving just a button
+  const submitCardOffer = (price, selectedPurse) => {
     return makeBidOfferForCard({
       walletP: walletPRef.current,
       publicFacet: publicFacetRef.current,
-      card: name,
+      // card: name,
       cardPurse,
       tokenPurse: selectedPurse || tokenPurses[0],
       price: BigInt(price),
@@ -180,7 +183,8 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={submitCardOffer}>
+      {/* CODECHANGE7: make the call to submit an bid */}
+      <button onClick={() => submitCardOffer(10000000, tokenPurses[1])}>
         {' '}
         CLICK THIS BUTTON TO TRIGGER CARD OFFER
       </button>

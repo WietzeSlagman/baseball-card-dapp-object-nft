@@ -7,19 +7,25 @@ const getCardAuctionDetail = async ({ publicFacet, card }) => {
 
 const makeBidOfferForCard = async ({
   walletP,
-  card,
+  // card,
   publicFacet,
   cardPurse,
   tokenPurse,
   price,
 }) => {
-  assert(card, X`At least one card must be chosen to purchase`);
+  // CODECHANGE5: hardcode nftobject matching an element in /api/cards.js
 
-  const invitation = await E(publicFacet).makeBidInvitationForKey({
+  const card = {
     url: 'https://agoric.com',
     name: 'Sleve McDichael',
-  });
+  };
 
+  assert(card, X`At least one card must be chosen to purchase`);
+
+  console.info('SELECTED CARD: ', card);
+  const invitation = await E(publicFacet).makeBidInvitationForKey(harden(card));
+
+  console.info('INVITATION: ', invitation);
   const offerConfig = {
     // JSONable ID for this offer.  This is scoped to the origin.
     id: Date.now(),
@@ -28,10 +34,7 @@ const makeBidOfferForCard = async ({
       want: {
         Asset: {
           pursePetname: cardPurse.pursePetname,
-          value: harden([{
-            url: 'https://agoric.com',
-            name: 'Sleve McDichael',
-          }]),
+          value: harden([card]),
         },
       },
       give: {
@@ -42,6 +45,7 @@ const makeBidOfferForCard = async ({
       },
     },
   };
+  console.info('OFFER CONFIG: ', offerConfig);
 
   return E(walletP).addOffer(offerConfig);
 };

@@ -1,17 +1,17 @@
-// GENERATED FROM /Users/wietze/Documents/Kryha/clients/agoric/dapp-card-store/api/deploy.js
+// GENERATED FROM /Users/carlostrigoseguin/Documents/KRYHA/agoric/nft-issue/api/deploy.js
 export default {
-  "INSTANCE_BOARD_ID": "487997721",
-  "INSTALLATION_BOARD_ID": "1675202761",
-  "AUCTION_ITEMS_INSTALLATION_BOARD_ID": "1530981318",
-  "INVITE_BRAND_BOARD_ID": "1265655452",
+  "INSTANCE_BOARD_ID": "board01422",
+  "INSTALLATION_BOARD_ID": "board04719",
+  "AUCTION_ITEMS_INSTALLATION_BOARD_ID": "board06120",
+  "INVITE_BRAND_BOARD_ID": "board02810",
   "BRIDGE_URL": "agoric-lookup:https://local.agoric.com?append=/bridge",
   "brandBoardIds": {
-    "Card": "596594455",
-    "Money": "1532665031"
+    "Card": "board03523",
+    "Money": "board0074"
   },
   "issuerBoardIds": {
-    "Card": "1026677745",
-    "Money": "1576549616"
+    "Card": "board05024",
+    "Money": "board0223"
   },
   "minBidPerCard": 1000000,
   "API_URL": "http://127.0.0.1:8000",
